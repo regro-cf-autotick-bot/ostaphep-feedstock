@@ -1,0 +1,126 @@
+schema_version: 1
+
+context:
+  name: OstapHEP
+  version: "3.8.6.4"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/OstapHEP/ostap/archive/v${{ version }}.tar.gz
+  sha256: 68f14398c2d5eda3e6bb5c738aacb15cb1b42d00c9ee3235a11d7f61a6150030
+  target_directory: ostap
+
+build:
+  number: 0
+  skip:
+    - win
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - cmake
+    - make
+    - ninja
+    - pip
+    - setuptools
+    - wheel
+  host:
+    - root_base
+    - root_cxx_standard
+    - python
+    - gsl
+    - scipy
+    - numpy
+    - numba
+    - cffi
+    - pip
+    - pathos
+    - dill
+    - multiprocess
+    - ppft
+    - joblib
+    - ipyparallel
+    - zstandard
+    - more-itertools
+    - sortedcontainers
+    - psutil
+    - tabulate
+    - terminaltables
+    - pathvalidate
+    - packaging
+    - libdb
+    - duckdb
+    - fasteners
+    - statsmodels
+    - pandas
+    - xgboost
+    - catboost
+    - lightgbm
+    - sweetviz
+    - hep_ml
+    - py-cpuinfo
+  run:
+    - python
+    - ipython
+    - root_base
+    - gsl
+    - scipy
+    - numpy
+    - numba
+    - cffi
+    - pathos
+    - dill
+    - multiprocess
+    - ppft
+    - joblib
+    - ipyparallel
+    - zstandard
+    - more-itertools
+    - sortedcontainers
+    - psutil
+    - tabulate
+    - terminaltables
+    - pathvalidate
+    - packaging
+    - libdb
+    - duckdb
+    - fasteners
+    - statsmodels
+    - pandas
+    - xgboost
+    - catboost
+    - lightgbm
+    - sweetviz
+    - hep_ml
+    - py-cpuinfo
+    - parallel
+
+tests:
+  - python:
+      imports:
+        - ostap
+        - ostap.core.core
+        - ostap.core.pyrouts
+  - script:
+      - ostap --help
+      - check-dependencies
+
+about:
+  license: BSD-3-Clause
+  license_file: ostap/LICENSE
+  summary: >
+    The Ostap project is a community-driven initiative aiming to provide more
+    user friendly and more intuitive interface to ROOT and PyROOT and extending
+    the existing functionality.
+  homepage: https://github.com/OstapHEP/ostap
+  repository: https://github.com/OstapHEP/ostap
+
+extra:
+  recipe-maintainers:
+    - TatianaOvsiannikova
+    - VanyaBelyaev
