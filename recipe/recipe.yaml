@@ -14,7 +14,7 @@ source:
   target_directory: ostap
 
 build:
-  number: 0
+  number: 2
   skip:
     - win
 
